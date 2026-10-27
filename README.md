@@ -10,8 +10,6 @@ An experimental framework for training a **YOLOv4-based object detector across g
 ![Split Learning](https://img.shields.io/badge/Split_Learning-262139?style=for-the-badge&logoColor=F472B6)
 ![5G + MEC](https://img.shields.io/badge/5G_%2B_MEC-252341?style=for-the-badge&logoColor=A78BFA)
 
-> **Research status:** Unpublished experimental work. This project is separate from the IEEE ICC Workshops 2022 smart brewing factory demo paper.
-
 ---
 
 ## System Overview
@@ -19,20 +17,13 @@ An experimental framework for training a **YOLOv4-based object detector across g
 The framework divides model computation between a **local client** and a **remote server**. The existing project documentation supports two operating modes: both model components on one machine, or the components on separate machines communicating through an accessible port. The distributed experiments use a network environment incorporating **5G wireless access and commercial wired connectivity**.
 
 **Experimental workflow**
+![Networked MEC split-learning architecture](figs/exp3.png)
 
 1. Prepare annotated bottle images and divide training samples across client datasets.
 2. Launch the local model component for client-side computation.
 3. Connect local and server components over the configured network port for split-model learning.
 4. Run collaborative training involving remote server-side computation.
 5. Evaluate object-detection performance under different distributed-learning methods and dataset distributions.
-
-*This is a high-level description. Exact split-layer placement, transferred tensors, gradient-exchange protocol, and synchronization scheduling require confirmation from implementation code.*
-
-### System Architecture
-
-![Networked MEC split-learning architecture](figs/exp3.png)
-
-*Figure: Experimental architecture. Upload `exp3.png` to the `assets` folder.*
 
 ---
 
@@ -80,17 +71,6 @@ The experiments compare **Local Learning, Sequential SL, Parallel SL, SplitFed, 
 
 ![AP and AR results for Dataset Type B](figs/tab4.png)
 
-**Selected AP@[IoU=0.5:0.95] results**
-
-| Method | Type A | Type B |
-|:--|--:|--:|
-| Local Learning | 0.237 | 0.203 |
-| Sequential SL | 0.381 | 0.396 |
-| Parallel SL | 0.382 | 0.319 |
-| SplitFed | 0.412 | 0.389 |
-| Central Learning | 0.532 | 0.481 |
-
-SplitFed improves AP@[IoU=0.5:0.95] over Local Learning in both dataset configurations, while Central Learning records the highest AP among the compared methods. These are **unpublished project results**, not peer-reviewed publication claims.
 
 ### Additional Experimental Graphs
 
@@ -101,30 +81,8 @@ SplitFed improves AP@[IoU=0.5:0.95] over Local Learning in both dataset configur
   </tr>
 </table>
 
-*Upload `exp4.png` and `exp5.png` to `assets/` to display these figures.*
-
 ---
 
-## Repository Structure
-
-```text
-Yolov4_split_learning/
-├── Local/
-│   └── main_local.py
-├── Server/
-│   └── main_server.py
-├── README.md
-└── assets/
-    ├── tab1.png
-    ├── tab2.png
-    ├── tab3.png
-    ├── tab4.png
-    ├── exp3.png      # Add this file
-    ├── exp4.png      # Add this file
-    └── exp5.png      # Add this file
-```
-
----
 
 ## Related Deployment
 
