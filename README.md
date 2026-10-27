@@ -1,4 +1,4 @@
-# YOLOv4 Split Learning over 5G and Commercial Networks
+# YOLOv4 Split Learning across Yonsei University and a Smart Brewing Factory
 
 **Distributed Object Detection · Split Learning · Multi-Access Edge Computing (MEC)**
 
